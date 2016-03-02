@@ -1,0 +1,15 @@
+{
+  "name": "perf",
+  "version": "1.0.0",
+  "description": "A simple object to evaluate the performance of a function|application|algorithm",
+  "main": "perf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "performance",
+    "duration"
+  ],
+  "author": "Remy Drouet",
+  "license": "ISC"
+}
