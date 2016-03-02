@@ -3,7 +3,7 @@
 
 'TimePerf' is a simple npm module to evaluate et measure a javascript application
 
-### [Documentation](http://remy199210.github.io/TimePerf/TimePerf.html)
+### Documentation [(click here)](http://remy199210.github.io/TimePerf/TimePerf.html)
 
 ### Installation
 ```bash
@@ -11,18 +11,18 @@ npm install time-perf
 ```
 ### Quick start
 ```js
-var perf = require('perf');
+var timePerf = require('time-perf');
 
-perf.start();
+timePerf.start();
 // ..execute algorithm to evaluate
-perf.step('Algorithm');
+timePerf.step('Algorithm');
 // ..execute a function to evaluate
-perf.stop('Function');
+timePerf.stop('Function');
 
-perf.resume();
+timePerf.resume();
 // Will display :
 --------------------------------
--          Perf result         -
+-          TimePerf result         -
 --------------------------------
  + Test duration   : 3235 ms
  + Steps number     : 2
