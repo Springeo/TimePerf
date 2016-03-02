@@ -1,15 +1,21 @@
 {
-  "name": "perf",
-  "version": "1.0.0",
+  "author": "Rémy Drouet <contact@remy-drouet.fr> (http://remy-drouet.fr)",
+  "name": "time-perf",
   "description": "A simple object to evaluate the performance of a function|application|algorithm",
-  "main": "perf.js",
+  "version": "1.0.0",
+  "repository": {
+  		"type": "git",
+  		"url": "git://github.com/remy199210/perf.git"
+	},
+  "main": "time-perf.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {},
+  "devDependencies": {},
   "keywords": [
     "performance",
     "duration"
   ],
-  "author": "Remy Drouet",
-  "license": "ISC"
+  "license": "AGPL-3.0"
 }
