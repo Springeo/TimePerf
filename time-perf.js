@@ -1,20 +1,20 @@
 /**
- * Perf is a simple node module to evaluate the performance of a function|application|algorithm
+ * TimePerf is a simple node module to evaluate the performance of a function|application|algorithm
  * @constructor
  * @property {Step[]} steps - Each recorded step
  * @example
- * var perf = require('Perf');
+ * var timePerf = require('time-perf');
  *
- * perf.start();
+ * timePerf.start();
  * // ..execute algorithm to evaluate
- * perf.step('Algorithm');
+ * timePerf.step('Algorithm');
  * // ..execute a function to evaluate
- * perf.stop('Function');
+ * timePerf.stop('Function');
  *
- * perf.resume();
+ * timePerf.resume();
  * // Will display :
  * --------------------------------
- * -          Perf result         -
+ * -          TimePerf result         -
  * --------------------------------
  *  + Test duration   : 3235 ms
  *  + Steps number     : 2
@@ -22,7 +22,7 @@
  *  > 1. Algorithm   : 15.23 %
  *  > 2. Function    : 84.77 %
  */
-function Perf(){
+function TimePerf(){
 	/**
 	 * @typedef {object} Step
 	 * @property {number} time
@@ -31,9 +31,9 @@ function Perf(){
 	this.steps = [];
 }
 
-Perf.prototype = {
+TimePerf.prototype = {
 	/**
-	 * Mark a step in perf measurements associated with a given name
+	 * Mark a step in TimePerf measurements associated with a given name
 	 * You can also use {@link step} and {@link stop} to a better readable integration
 	 * @param [name] - Name associated to the step
 	 * @return {number} index - Index of the step
@@ -42,7 +42,7 @@ Perf.prototype = {
 		this.step(name);
 	},
 	/**
-	 * Mark a step in perf measurements associated with a given name
+	 * Mark a step in TimePerf measurements associated with a given name
 	 * You can also use {@link start} and {@link step} to a better readable integration
 	 * @function
 	 * @param [name] - Name associated to the step
@@ -52,7 +52,7 @@ Perf.prototype = {
 		this.step(name);
 	},
 	/**
-	 * Mark a step in perf measurements associated with a given name
+	 * Mark a step in TimePerf measurements associated with a given name
 	 * You can also use {@link start} and {@link stop} to a better readable integration
 	 * @param {string} [name] - Name associated to the step
 	 * @return {number} index - Index of the step
@@ -70,14 +70,14 @@ Perf.prototype = {
 	 * @param {number} [index] - Get only the given step result
 	 * @param {boolean} [silent=false] - No console message will be displayed
 	 * @example <caption>Resume one with messages</caption>
-	 * // returns a number and display the perf result of the second step in the console
-	 * perf.resume(2);
+	 * // returns a number and display the TimePerf result of the second step in the console
+	 * timePerf.resume(2);
 	 * @example <caption>Resume all steps silently</caption>
 	 * // returns an Array of percentage without console messages
-	 * perf.resume(true);
+	 * timePerf.resume(true);
 	 * @example <caption>Resume one step silently</caption>
 	 * // returns the second step percentage without console messages
-	 * perf.resume(2,true);
+	 * timePerf.resume(2,true);
 	 * @returns {number|number[]}
 	 */
 	resume: function (index,silent) {
@@ -90,7 +90,7 @@ Perf.prototype = {
 		var nbSteps = this.steps.length-1;
 		var totalDuration = this.steps[nbSteps].time-this.steps[0].time;
 		var strResult = "--------------------------------\n";
-		strResult    += "-          Perf result         -\n";
+		strResult    += "-          TimePerf result         -\n";
 		strResult    += "--------------------------------\n";
 		strResult    += " + Test duration   : "+totalDuration+" ms\n";
 		strResult    += " + Steps number     : "+nbSteps+"\n\n";
@@ -114,21 +114,21 @@ Perf.prototype = {
 				console.log(strResult);
 			return percentages;
 		} else {
-			console.log("/!\\ perf did not find enough steps too display a result");
+			console.log("/!\\ TimePerf did not find enough steps too display a result");
 			if(this.steps.length==1)
-				console.log("\t> perf is started but never stopped");
+				console.log("\t> TimePerf is started but never stopped");
 			else
-				console.log("\t> perf has not been started");
+				console.log("\t> TimePerf has not been started");
 			return 0;
 		}
 	},
 
 	/**
-	 * Resets the perf tool (Removes all steps)
+	 * Resets the TimePerf tool (Removes all steps)
 	 */
 	reset: function () {
 		this.steps = [];
 	}
 };
 
-module.exports = new Perf();
+module.exports = new TimePerf();
