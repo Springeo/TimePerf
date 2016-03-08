@@ -30,3 +30,5 @@ timePerf.resume();
  > 1. Algorithm   : 15.23 %
  > 2. Function    : 84.77 %
 ```
+### Last feature
+You can now ```pause``` and ```unpause``` TimePerf

@@ -29,6 +29,8 @@ function TimePerf(){
 	 * @property {string} msg
 	 */
 	this.steps = [];
+	this.pauseStep = 0;
+	this.pauseTime = 0;
 }
 
 TimePerf.prototype = {
@@ -55,13 +57,17 @@ TimePerf.prototype = {
 	 * Mark a step in TimePerf measurements associated with a given name
 	 * You can also use {@link start} and {@link stop} to a better readable integration
 	 * @param {string} [name] - Name associated to the step
-	 * @return {number} index - Index of the step
+	 * @return {number} index - Index of the step (-1 if on pause)
 	 */
 	step: function (name) {
+		if(this.pauseStep){
+			console.log("/!\\ TimePerf can't mark a step during a pause ("+name+" step has been ignored)");
+			return -1;
+		}
 		if(!name){
 			name = "Step "+this.steps.length+1;
 		}
-		this.steps.push({time:Date.now(),msg: name});
+		this.steps.push({time:Date.now()-this.pauseTime,msg: name});
 		return this.steps.length-1;
 	},
 
@@ -88,25 +94,27 @@ TimePerf.prototype = {
 
 		var iDuration, percentage;
 		var nbSteps = this.steps.length-1;
-		var totalDuration = this.steps[nbSteps].time-this.steps[0].time;
-		var strResult = "--------------------------------\n";
-		strResult    += "-          TimePerf result         -\n";
-		strResult    += "--------------------------------\n";
-		strResult    += " + Test duration   : "+totalDuration+" ms\n";
-		strResult    += " + Steps number     : "+nbSteps+"\n\n";
+		var testDuration = this.steps[nbSteps].time-this.steps[0].time;
 
 		if(index && index>0 && index<this.steps.length){
 			iDuration = this.steps[index].time-this.steps[index-1].time;
-			percentage = 100*iDuration/totalDuration;
-			strResult+= " > "+this.steps[index].msg+"\t: "+percentage.toFixed(2)+"%\n";
+			percentage = 100*iDuration/testDuration;
+			var strResult = "[TimePerf] > "+this.steps[index].msg+"\t: "+percentage.toFixed(2)+"%\t("+iDuration+" ms)\n";
 			if(!silent)
 				console.log(strResult);
 			return percentage;
 		} else if(this.steps.length>1) {
+			var strResult = "--------------------------------\n";
+			strResult    += "-         TimePerf result      -\n";
+			strResult    += "--------------------------------\n";
+			strResult    += " + Total duration  : "+(this.pauseTime+testDuration)+" ms\n";
+			strResult    += " + Test duration   : "+testDuration+" ms\n";
+			strResult    += " + Pause duration  : "+this.pauseTime+" ms\n";
+			strResult    += " + Steps number    : "+nbSteps+"\n\n";
 			var percentages = [];
 			for (var i = 1; i < this.steps.length; i++) {
 				iDuration = this.steps[i].time-this.steps[i-1].time;
-				percentage = 100*iDuration/totalDuration;
+				percentage = 100*iDuration/testDuration;
 				percentages.push(percentage);
 				strResult+= " > "+i+". "+this.steps[i].msg+"\t: "+percentage.toFixed(2)+" %\t("+iDuration+" ms)\n";
 			}
@@ -128,6 +136,32 @@ TimePerf.prototype = {
 	 */
 	reset: function () {
 		this.steps = [];
+		this.pauseStep = 0;
+		this.pauseTime = 0;
+	},
+
+	/**
+	 * Switch TimePerf to pause. You can't mark a step during a pause.
+	 */
+	pause: function () {
+		this.pauseStep = Date.now();
+	},
+
+	/**
+	 * Unpauses TimePerf and returns the pause duration
+	 * @returns {number} pauseTime - The last pause duration
+	 */
+	unpause: function () {
+		var res = 0;
+		if(this.pauseStep){
+			res = Date.now() - this.pauseStep;
+			this.pauseTime+= res;
+			console.log("TimePerf has marked a "+res+" ms pause");
+		} else {
+			console.log("/!\\ TimePerf has not been paused before to unpause.");
+		}
+		this.pauseStep = 0;
+		return res;
 	}
 };
 
