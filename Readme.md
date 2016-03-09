@@ -15,20 +15,47 @@ var timePerf = require('time-perf');
 
 timePerf.start();
 // ..execute algorithm to evaluate
-timePerf.step('Algorithm');
+timePerf.step('Algorithm').resume();
+// Will display "\[TimePerf] > 1. Algorithm : 127 ms"
+
 // ..execute a function to evaluate
-timePerf.stop('Function');
+timePerf.stop('Function').resume;
 
 timePerf.resume();
 // Will display :
+
 --------------------------------
--          TimePerf result         -
+-         TimePerf result      -
 --------------------------------
- + Test duration   : 3235 ms
+ + Total duration   : 200 ms
+ + Test duration    : 200 ms
+ + Pause duration   : 0 ms
  + Steps number     : 2
 
- > 1. Algorithm   : 15.23 %
- > 2. Function    : 84.77 %
+ > 1. Algorithm   : 63.5 % (127 ms)
+ > 2. Function    : 36.5 % (73 ms)
 ```
-### Last feature
-You can now ```pause``` and ```unpause``` TimePerf
+### Latest features
++ TimePerf functions can now be chained
++ You can now ```pause``` and ```unpause```
++ TimePerf can display any previous action result with ```log```
++ ```resume``` will display the last step result when chained to ```step```
+
+```js
+timePerf.start();
+timePerf.step("First step").resume().pause();
+// display "\[TimePerf] > 1. First Step : 20 ms"
+
+timePerf.unpause().log();
+// display "TimePerf has marked a 4 ms pause"
+```
+
++ ```stop``` will ```step``` and ```pause``` TimePerf
+
+```js
+timePerf.stop("Last step");
+//..
+timePerf.unpause()
+```
+
++ ```start``` will ```reset``` and ```step``` TimePerf. You can call it at any time to restart TimePerf
