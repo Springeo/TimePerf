@@ -2,7 +2,7 @@
   "author": "Rémy Drouet <contact@remy-drouet.fr> (http://remy-drouet.fr)",
   "name": "time-perf",
   "description": "A simple object to evaluate the performance of a function|application|algorithm",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "repository": {
   		"type": "git",
   		"url": "git://github.com/remy199210/TimePerf.git"

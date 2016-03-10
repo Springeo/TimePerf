@@ -22,29 +22,38 @@
  *  > 1. Algorithm   : 15.23 %
  *  > 2. Function    : 84.77 %
  */
-function TimePerf(){
+function TimePerf(depth){
 	/**
 	 * @typedef {object} Step
 	 * @property {number} time
-	 * @property {string} msg
+	 * @property {string} name
+	 * @property {TimePerf} [child]
 	 */
 	this.steps = [];
 	this.pauseStep = 0;
 	this.pauseTime = 0;
 	this.result = 0;
 	this.strResult = "TimePerf created";
+	this.depth = depth?depth:0;
+	this.name = 'TimePerf session '+this.depth;
+	this.children = [];
+	this.tag = "[TimePerf] ";
 	return this;
 }
 
 TimePerf.prototype = {
 	/**
 	 * Reset TimePerf & mark a step in TimePerf measurements associated with a given name
+	 * @param {String} name - Name of the new TimePerf session
 	 * @returns {TimePerf} timePerf - The TimePerf Object
 	 */
-	start: function () {
+	start: function (name) {
+		if(name){
+			this.name = name;
+		}
 		this.reset().step();
 		this.result = 0;
-		this.strResult = "TimePerf started";
+		this.strResult = this.tag+this.name+" started";
 		return this;
 	},
 	/**
@@ -55,9 +64,9 @@ TimePerf.prototype = {
 	 * @returns {TimePerf} timePerf - The TimePerf Object
 	 */
 	stop: function (name) {
-		this.step(name).pause();
+		this.step(name?name:this.name).pause();
 		this.result = 0;
-		this.strResult = "TimePerf stopped";
+		this.strResult = this.tag+this.name+" stopped";
 		return this;
 	},
 	/**
@@ -68,14 +77,15 @@ TimePerf.prototype = {
 	 */
 	step: function (name) {
 		if(this.pauseStep){
-			console.log("/!\\ TimePerf can't mark a step during a pause or when it's stopped ("+name+" step has been ignored)");
+			console.log("/!\\ "+this.tag+this.name+" can't mark a step during a pause or when it's stopped ("+name+" step has been ignored)");
 			this.result = 0;
 			return this;
 		}
 		if(!name){
 			name = "Step "+this.steps.length+1;
 		}
-		this.steps.push({time:Date.now()-this.pauseTime,msg: name});
+		this.steps.push({time:Date.now()-this.pauseTime,name: name, children:this.children});
+		this.children = [];
 		this.result = this.steps.length-1;
 		this.strResult = "[TimePerf] > "+this.result+". "+name;
 		return this;
@@ -103,42 +113,60 @@ TimePerf.prototype = {
 	 * @returns {TimePerf} timePerf - The TimePerf Object plus a percentage or an array of percentage (timePerf.result == 0 for error)
 	 */
 	resume: function (index,silent) {
-		if(arguments.length==1 && arguments[0]===true){
-			silent = true;
-			index = this.result;
-		}
-		if(!index && typeof this.result === 'number'){
-			index = this.result;
-		}
-		if(index && index>0 && index<this.steps.length){
-			this.result = this.steps[index].time-this.steps[index-1].time;
-			this.strResult = "[TimePerf] > "+this.steps[index].msg+"\t: "+this.result+" ms)\n";
-		} else if(this.steps.length>1) {
-			var nbSteps = this.steps.length-1;
-			var testDuration = this.steps[nbSteps].time-this.steps[0].time;
-			var strResult = "--------------------------------\n";
-			strResult    += "-         TimePerf result      -\n";
-			strResult    += "--------------------------------\n";
-			strResult    += " + Total duration  : "+(this.pauseTime+testDuration)+" ms\n";
-			strResult    += " + Test duration   : "+testDuration+" ms\n";
-			strResult    += " + Pause duration  : "+this.pauseTime+" ms\n";
-			strResult    += " + Steps number    : "+nbSteps+"\n\n";
-			var percentage,percentages = [];
-			for (var i = 1; i < this.steps.length; i++) {
-				var iDuration = this.steps[i].time-this.steps[i-1].time;
-				percentage = 100*iDuration/testDuration;
-				percentages.push(percentage);
-				strResult+= " > "+i+". "+this.steps[i].msg+"\t: "+percentage.toFixed(2)+" %\t("+iDuration+" ms)\n";
-			}
-			this.result = percentages;
-			this.strResult = strResult;
-		} else {
-			this.strResult = "\n/!\\ TimePerf did not find enough steps too display a result";
+		if(this.steps.length<2){
+			this.strResult = indent+"\n/!\\ TimePerf did not find enough steps too display a result";
 			if(this.steps.length==1)
-				this.strResult+="\n\t> TimePerf is started but never stepped/stopped\n";
+				this.strResult+= indent+"\n\t> TimePerf is started but never stepped/stopped\n";
 			else
-				this.strResult+="\n\t> TimePerf has not been started\n";
+				this.strResult+= indent+"\n\t> TimePerf has not been started\n";
 			this.result = [];
+		} else {
+			var indent = '';
+			for (var i = 0; i < this.depth; i++) {
+				indent += '\t';
+			}
+			if (arguments.length == 1 && arguments[0] === true) {
+				silent = true;
+				index = null;
+			}
+			if (!index) {
+				if( typeof this.result === 'number' && this.result>0)
+					index =this.result;
+				else if(this.depth >0)
+					index=this.steps.length-1;
+			}
+			if (index && index > 0 && index < 2) {
+				this.result = this.steps[index].time - this.steps[index - 1].time;
+				this.strResult = indent + "> " + this.steps[index].name + "\t: " + this.result + " ms\n";
+			} else {
+				var nbSteps = this.steps.length - 1;
+				var testDuration = this.steps[nbSteps].time - this.steps[0].time;
+				var strResult = '';
+				if (this.depth == 0) {
+					strResult += "--------------------------------\n";
+					strResult += "-         TimePerf result      -\n";
+					strResult += "--------------------------------\n";
+				}
+				strResult += indent + '## '+this.name + "\n";
+				//strResult    += indent+"+ Total duration  : "+(this.pauseTime+testDuration)+" ms\n";
+				strResult += indent + "+ TimePerf duration : " + testDuration + " ms\n";
+				strResult += indent + "+ Pause duration    : " + this.pauseTime + " ms\n";
+				var percentage, percentages = [];
+				for (var i = 1; i < this.steps.length; i++) {
+					var step = this.steps[i];
+					if(i>0){
+						var iDuration = step.time - this.steps[i - 1].time;
+						percentage = 100 * iDuration / testDuration;
+						percentages.push(percentage);
+						strResult += indent + "> " + i + ". " + step.name + "\t: " + percentage.toFixed(2) + " %\t(" + iDuration + " ms)\n";
+					}
+					for (var j = 0; j < step.children.length; j++) {
+						strResult += step.children[j].resume(true).strResult;
+					}
+				}
+				this.result = percentages;
+				this.strResult = strResult;
+			}
 		}
 		return silent?this:this.log();
 	},
@@ -183,18 +211,72 @@ TimePerf.prototype = {
 		if(this.pauseStep){
 			res = Date.now() - this.pauseStep;
 			this.pauseTime+= res;
-			this.strResult = "TimePerf has marked a "+res+" ms pause";
+			this.strResult = this.tag+this.name+" has marked a "+res+" ms pause";
 		} else {
-			this.strResult = "/!\\ TimePerf has not been paused before to unpause.";
+			this.strResult = "/!\\ "+this.tag+this.name+" has not been paused before to unpause.";
 		}
 		this.pauseStep = 0;
 		this.result = res;
 		return this;
 	},
 
+	/**
+	 * Display the last result as a message in the console
+	 * @returns {TimePerf}
+	 */
 	log: function () {
 		if(this.strResult)
 			console.log(this.strResult);
+		return this;
+	},
+
+	/**
+	 * Create a new TimePerf child. This child will be bind to the next step
+	 * @returns {TimePerf} child - The created child
+	 */
+	child: function () {
+		if(this.steps.length>0){
+			var newChild = new TimePerf(this.depth+1);
+			this.children.push(newChild);
+			return newChild;
+		} else {
+			console.log("TimePerf hasn't been started. Child can't be created without available parent");
+		}
+	},
+
+	/**
+	 * Create and start a new TimePerf child. This child will be bind to the next
+	 * @param {string} name - Child's name
+	 * @returns {TimePerf} child - The created child
+	 */
+	childStart: function (name) {
+		return this.child().start(name);
+	},
+
+	/**
+	 * Stop the last TimePerf child
+	 * @param {string} [name] - Name of the last child step (otherwise will be the child name)
+	 * @returns {TimePerf} parent - Return the current TimePerf (not the child)
+	 */
+	childStop: function(name){
+		if(this.children.length > 0) {
+			var child = this.children[this.children.length-1];
+			child.stop(name);
+		}
+		else
+			console.log(this.tag+"No child has been started yet");
+		return this;
+	},
+
+	/**
+	 * Return the last created child for the current step, if none returns the current TimePerf.
+	 * @returns {TimePerf} child
+	 */
+	lastChild: function () {
+		if(this.children.length > 0) {
+			return this.children[this.children.length-1];
+		}
+		console.log(this.tag+"No child has been started yet");
 		return this;
 	}
 };

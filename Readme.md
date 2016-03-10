@@ -1,7 +1,7 @@
-#TimePerf
+# TimePerf
 > light performance measure tool
 
-'TimePerf' is a simple npm module to evaluate et measure a javascript application
+TimePerf is a simple npm module to evaluate et measure a javascript application. TimePerf is a singleton it can be require in through several modules/files.
 
 ### Documentation [(click here)](http://remy199210.github.io/TimePerf/TimePerf.html)
 
@@ -13,10 +13,10 @@ npm install time-perf
 ```js
 var timePerf = require('time-perf');
 
-timePerf.start();
+timePerf.start('Test');
 // ..execute algorithm to evaluate
 timePerf.step('Algorithm').resume();
-// Will display "\[TimePerf] > 1. Algorithm : 127 ms"
+// Will display "> 1. Algorithm : 127 ms"
 
 // ..execute a function to evaluate
 timePerf.stop('Function').resume;
@@ -27,17 +27,53 @@ timePerf.resume();
 --------------------------------
 -         TimePerf result      -
 --------------------------------
- + Total duration   : 200 ms
- + Test duration    : 200 ms
+# Test
+ + TimePerf duration   : 200 ms
  + Pause duration   : 0 ms
- + Steps number     : 2
 
  > 1. Algorithm   : 63.5 % (127 ms)
  > 2. Function    : 36.5 % (73 ms)
 ```
-### Latest features
-+ TimePerf functions can now be chained
-+ You can now ```pause``` and ```unpause```
+### Latest features : TimePerf Children
+> TimePerf made some children ! You can now create children in each step.
+
+To do it use ```child``` or even faster ```childStart``` and ```childStop``` to make quick child.
+A child is a TimePerf object you can use it as its parent.
+You can add as much child and as deep as you want to.
+
+##### Use example
+```js
+timePerf.start('Test').childStart('SmallChild 1');
+// .. some stuff
+timePerf.childStop().childStart('SmallChild 2');
+// .. more stuff
+timePerf.lastChild().stop();
+timePerf.step('Parent 1');
+var perfChild = timePerf.child().start('BigChild');//same as timePerf.childStart('BigChild')
+// ..inside step
+perfChild.step('inside step 1');
+timePerf.childStop('inside step 2').stop('Parent 2').resume();
+
+// Will display
+--------------------------------
+-         TimePerf result      -
+--------------------------------
+## Test
++ TimePerf duration : 19609 ms
++ Pause duration    : 0 ms
+> 1. Parent 1	: 0.54 %	(105 ms)
+	> SmallChild 1	: 12 ms
+	> SmallChild 2	: 92 ms
+> 2. Parent 2	: 99.46 %	(19504 ms)
+	## BigChild
+	+ TimePerf duration : 19504 ms
+	+ Pause duration    : 0 ms
+	> 1. inside step 1	: 65.56 %	(12787 ms)
+	> 2. inside step 2	: 34.44 %	(6717 ms)
+```
+### More features
++ TimePerf functions can be chained
++ You can ```pause``` and ```unpause```
 + TimePerf can display any previous action result with ```log```
 + ```resume``` will display the last step result when chained to ```step```
 
