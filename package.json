@@ -13,6 +13,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "jaguarjs-jsdoc-fixed": "^0.1.2",
     "jsdoc": "^3.4.0",
     "smooth-jsdoc": "0.0.1"
   },

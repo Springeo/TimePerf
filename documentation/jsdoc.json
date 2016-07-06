@@ -19,6 +19,7 @@
     "encoding": "utf8",
     "private": true,
     "recurse": true,
-    "template": "../node_modules/smooth-jsdoc"
+//    "template": "../node_modules/smooth-jsdoc"
+        "template": "../node_modules/jaguarjs-jsdoc-fixed"
   }
 }
