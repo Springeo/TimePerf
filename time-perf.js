@@ -11,7 +11,7 @@
  * // ..execute a function to evaluate
  * timePerf.stop('Function');
  *
- * timePerf.resume();
+ * timePerf.print();
  * // Will display :
  * --------------------------------
  * -          TimePerf result         -
@@ -92,27 +92,27 @@ TimePerf.prototype = {
 	},
 
 	/**
-	 * Get the result of the measurements
+	 * Get the result of the measurements (alias resume)
 	 * @param {number} [index] - Get only the given step result
 	 * @param {boolean} [silent=false] - No console message will be displayed
 	 * @example <caption>Resume after step</caption>
 	 * // display the duration of the previous step
-	 * timePerf.step("Step name").resume();
+	 * timePerf.step("Step name").print();
 	 * @example <caption>Resume after stop</caption>
 	 * // display a resume of TimePerf steps and switch to pause
-	 * timePerf.stop("Last Step").resume();
+	 * timePerf.stop("Last Step").print();
 	 * @example <caption>Resume one with messages</caption>
 	 * // display the duration of the second step
-	 * timePerf.resume(2);
+	 * timePerf.print(2);
 	 * @example <caption>Resume all steps silently</caption>
 	 * // returns an Array of percentage without console messages
-	 * timePerf.resume(true);
+	 * timePerf.print(true);
 	 * @example <caption>Resume one step silently</caption>
 	 * // returns the second step percentage without console messages
-	 * timePerf.resume(2,true);
+	 * timePerf.print(2,true);
 	 * @returns {TimePerf} timePerf - The TimePerf Object plus a percentage or an array of percentage (timePerf.result == 0 for error)
 	 */
-	resume: function (index,silent) {
+	print: function (index,silent) {
 		if(this.steps.length<2){
 			this.strResult = indent+"\n/!\\ TimePerf did not find enough steps too display a result";
 			if(this.steps.length==1)
@@ -161,7 +161,7 @@ TimePerf.prototype = {
 						strResult += indent + "> " + i + ". " + step.name + "\t: " + percentage.toFixed(2) + " %\t(" + iDuration + " ms)\n";
 					}
 					for (var j = 0; j < step.children.length; j++) {
-						strResult += step.children[j].resume(true).strResult;
+						strResult += step.children[j].print(true).strResult;
 					}
 				}
 				this.result = percentages;
@@ -169,6 +169,10 @@ TimePerf.prototype = {
 			}
 		}
 		return silent?this:this.log();
+	},
+
+	resume: function () {
+		this.print.call(this,arguments)
 	},
 
 	/**
@@ -188,7 +192,7 @@ TimePerf.prototype = {
 	 * Switch TimePerf to pause. You can't mark a step during a pause.
 	 * pause doesn't modify the previous action result and strResult
 	 * @example
-	 * timePerf.step("Step name").pause().resume();
+	 * timePerf.step("Step name").pause().print();
 	 * //Will display
 	 * "[TimePerf] > 1. Step name : 127 ms"
 	 * @returns {TimePerf} timePerf - The TimePerf Object
@@ -278,6 +282,19 @@ TimePerf.prototype = {
 		}
 		console.log(this.tag+"No child has been started yet");
 		return this;
+	},
+
+	/**
+	 * Return the duration (in ms) of a specific step
+	 * @param {number} index - Step's index
+	 * @returns {number}
+	 */
+	getTime: function (index) {
+		if(index>0 && index<this.steps.length){
+			return this.steps[index].time-this.steps[index-1].time;
+		} else {
+			console.log(index + "index does not exist");
+		}
 	}
 };
 

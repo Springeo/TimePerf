@@ -1,0 +1,24 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc","closure"]
+  },
+  "source": {
+    "include": ["time-perf.js", "package.json", "Readme.md"],
+    "exclude": [],
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": false,
+    "applicationName": "Time-Perf"
+  },
+  "opts": {
+    "destination": "documentation",
+    "encoding": "utf8",
+    "private": true,
+    "recurse": true,
+    "template": "../node_modules/smooth-jsdoc"
+  }
+}

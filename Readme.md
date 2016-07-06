@@ -15,13 +15,13 @@ var timePerf = require('time-perf');
 
 timePerf.start('Test');
 // ..execute algorithm to evaluate
-timePerf.step('Algorithm').resume();
+timePerf.step('Algorithm').print();
 // Will display "> 1. Algorithm : 127 ms"
 
 // ..execute a function to evaluate
-timePerf.stop('Function').resume;
+timePerf.stop('Function').print();
 
-timePerf.resume();
+timePerf.print();
 // Will display :
 
 --------------------------------
@@ -34,12 +34,16 @@ timePerf.resume();
  > 1. Algorithm   : 63.5 % (127 ms)
  > 2. Function    : 36.5 % (73 ms)
 ```
-### Latest features : TimePerf Children
+### Latest features :
++ Better use ```print``` to print measure durations (```resume``` still an alias)
++ For permanent duration measure and easiest duration analysis use ```getTime(index)```
+
 > TimePerf made some children ! You can now create children in each step.
 
-To do it use ```child``` or even faster ```childStart``` and ```childStop``` to make quick child.
++ To do it use ```child``` or even faster ```childStart``` and ```childStop``` to make quick child.
 A child is a TimePerf object you can use it as its parent.
-You can add as much child and as deep as you want to.
+You can add as much child and as deep as you want to.  
+
 
 ##### Use example
 ```js
@@ -52,7 +56,7 @@ timePerf.step('Parent 1');
 var perfChild = timePerf.child().start('BigChild');//same as timePerf.childStart('BigChild')
 // ..inside step
 perfChild.step('inside step 1');
-timePerf.childStop('inside step 2').stop('Parent 2').resume();
+timePerf.childStop('inside step 2').stop('Parent 2').print();
 
 // Will display
 --------------------------------
@@ -75,11 +79,11 @@ timePerf.childStop('inside step 2').stop('Parent 2').resume();
 + TimePerf functions can be chained
 + You can ```pause``` and ```unpause```
 + TimePerf can display any previous action result with ```log```
-+ ```resume``` will display the last step result when chained to ```step```
++ ```print``` will display the last step result when chained to ```step```
 
 ```js
 timePerf.start();
-timePerf.step("First step").resume().pause();
+timePerf.step("First step").print().pause();
 // display "\[TimePerf] > 1. First Step : 20 ms"
 
 timePerf.unpause().log();
