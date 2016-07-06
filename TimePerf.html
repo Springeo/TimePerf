@@ -17,7 +17,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true},"applicationName":"TimePerf","linenums":false};
+    var config = {"monospaceLinks":false,"cleverLinks":true,"applicationName":"Time-Perf","default":{}};
     </script>
     
 
@@ -27,7 +27,7 @@
 <div id="wrap" class="clearfix">
     
 <div class="navigation">
-    <h3 class="applicationName"><a href="index.html">TimePerf</a></h3>
+    <h3 class="applicationName"><a href="index.html">Time-Perf</a></h3>
 
     <div class="search">
         <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
@@ -56,15 +56,17 @@
             
                 <li data-name="TimePerf#childStop"><a href="TimePerf.html#childStop">childStop</a></li>
             
+                <li data-name="TimePerf#getTime"><a href="TimePerf.html#getTime">getTime</a></li>
+            
                 <li data-name="TimePerf#lastChild"><a href="TimePerf.html#lastChild">lastChild</a></li>
             
                 <li data-name="TimePerf#log"><a href="TimePerf.html#log">log</a></li>
             
                 <li data-name="TimePerf#pause"><a href="TimePerf.html#pause">pause</a></li>
             
-                <li data-name="TimePerf#reset"><a href="TimePerf.html#reset">reset</a></li>
+                <li data-name="TimePerf#print"><a href="TimePerf.html#print">print</a></li>
             
-                <li data-name="TimePerf#resume"><a href="TimePerf.html#resume">resume</a></li>
+                <li data-name="TimePerf#reset"><a href="TimePerf.html#reset">reset</a></li>
             
                 <li data-name="TimePerf#start"><a href="TimePerf.html#start">start</a></li>
             
@@ -138,20 +140,18 @@
     
         
         <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line25">line 25</a>
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 25
         </div>
         
     </div>
 
-    
-    <p class="summary"><p>TimePerf is a simple node module to evaluate the performance of a function|application|algorithm</p>.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>TimePerf is a simple node module to evaluate the performance of a function|application|algorithm</p>
+        TimePerf is a simple node module to evaluate the performance of a function|application|algorithm
     </div>
     
 
@@ -207,7 +207,7 @@
             
             
             
-            <td class="description last"><p>Each recorded step</p></td>
+            <td class="description last">Each recorded step</td>
         </tr>
 	
 	
@@ -261,7 +261,7 @@ timePerf.step('Algorithm');
 // ..execute a function to evaluate
 timePerf.stop('Function');
 
-timePerf.resume();
+timePerf.print();
 // Will display :
 --------------------------------
 -          TimePerf result         -
@@ -306,20 +306,18 @@ timePerf.resume();
     
         
         <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line237">line 237</a>
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 241
         </div>
         
     </div>
 
-    
-    <p class="summary">Create a new TimePerf child.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Create a new TimePerf child. This child will be bind to the next step</p>
+        Create a new TimePerf child. This child will be bind to the next step
     </div>
     
 
@@ -409,20 +407,18 @@ timePerf.resume();
     
         
         <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line252">line 252</a>
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 256
         </div>
         
     </div>
 
-    
-    <p class="summary">Create and start a new TimePerf child.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Create and start a new TimePerf child. This child will be bind to the next</p>
+        Create and start a new TimePerf child. This child will be bind to the next
     </div>
     
 
@@ -469,7 +465,7 @@ timePerf.resume();
             
             <td class="description last">
                 
-                <p>Child's name</p></td>
+                Child's name</td>
         </tr>
 	
 	
@@ -557,20 +553,18 @@ timePerf.resume();
     
         
         <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line261">line 261</a>
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 265
         </div>
         
     </div>
 
-    
-    <p class="summary"><p>Stop the last TimePerf child</p>.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Stop the last TimePerf child</p>
+        Stop the last TimePerf child
     </div>
     
 
@@ -624,7 +618,7 @@ timePerf.resume();
                         
                     
                 
-                <p>Name of the last child step (otherwise will be the child name)</p></td>
+                Name of the last child step (otherwise will be the child name)</td>
         </tr>
 	
 	
@@ -704,6 +698,152 @@ timePerf.resume();
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="getTime">
+            
+            
+            getTime<span class="signature">(index)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{number}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 292
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Return the duration (in ms) of a specific step
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Step's index</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        number
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="lastChild">
             
             
@@ -712,20 +852,18 @@ timePerf.resume();
     
         
         <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line275">line 275</a>
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 279
         </div>
         
     </div>
 
-    
-    <p class="summary">Return the last created child for the current step, if none returns the current TimePerf.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Return the last created child for the current step, if none returns the current TimePerf.</p>
+        Return the last created child for the current step, if none returns the current TimePerf.
     </div>
     
 
@@ -815,20 +953,18 @@ timePerf.resume();
     
         
         <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line227">line 227</a>
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 231
         </div>
         
     </div>
 
-    
-    <p class="summary"><p>Display the last result as a message in the console</p>.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Display the last result as a message in the console</p>
+        Display the last result as a message in the console
     </div>
     
 
@@ -918,21 +1054,19 @@ timePerf.resume();
     
         
         <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line196">line 196</a>
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 200
         </div>
         
     </div>
 
-    
-    <p class="summary">Switch TimePerf to pause.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Switch TimePerf to pause. You can't mark a step during a pause.
-pause doesn't modify the previous action result and strResult</p>
+        Switch TimePerf to pause. You can't mark a step during a pause.
+pause doesn't modify the previous action result and strResult
     </div>
     
 
@@ -1012,7 +1146,7 @@ pause doesn't modify the previous action result and strResult</p>
         
 
     
-    <pre class="prettyprint"><code>timePerf.step("Step name").pause().resume();
+    <pre class="prettyprint"><code>timePerf.step("Step name").pause().print();
 //Will display
 "[TimePerf] > 1. Step name : 127 ms"</code></pre>
     
@@ -1024,131 +1158,26 @@ pause doesn't modify the previous action result and strResult</p>
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="reset">
+        <h4 class="name" id="print">
             
             
-            reset<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TimePerf.html">TimePerf</a>}</span>
+            print<span class="signature">(<span class="optional">index</span>, <span class="optional">silent</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TimePerf.html">TimePerf</a>}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line178">line 178</a>
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 115
         </div>
         
     </div>
 
-    
-    <p class="summary"><p>Resets the TimePerf tool (Removes all steps)</p>.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Resets the TimePerf tool (Removes all steps)</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        <a href="TimePerf.html">TimePerf</a>
-                        
-                    
-            </td>
-            <td class="description last">timePerf - The TimePerf Object</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="resume">
-            
-            
-            resume<span class="signature">(<span class="optional">index</span>, <span class="optional">silent</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TimePerf.html">TimePerf</a>}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line115">line 115</a>
-        </div>
-        
-    </div>
-
-    
-    <p class="summary"><p>Get the result of the measurements</p>.</p>
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Get the result of the measurements</p>
+        Get the result of the measurements (alias resume)
     </div>
     
 
@@ -1208,7 +1237,7 @@ pause doesn't modify the previous action result and strResult</p>
                         
                     
                 
-                <p>Get only the given step result</p></td>
+                Get only the given step result</td>
         </tr>
 	
 	
@@ -1244,7 +1273,7 @@ pause doesn't modify the previous action result and strResult</p>
                         
                     
                 
-                <p>No console message will be displayed</p></td>
+                No console message will be displayed</td>
         </tr>
 	
 	
@@ -1325,7 +1354,7 @@ pause doesn't modify the previous action result and strResult</p>
 
     
     <pre class="prettyprint"><code>// display the duration of the previous step
-timePerf.step("Step name").resume();</code></pre>
+timePerf.step("Step name").print();</code></pre>
     
 
         <p class="code-caption">Resume after stop</p>
@@ -1333,7 +1362,7 @@ timePerf.step("Step name").resume();</code></pre>
 
     
     <pre class="prettyprint"><code>// display a resume of TimePerf steps and switch to pause
-timePerf.stop("Last Step").resume();</code></pre>
+timePerf.stop("Last Step").print();</code></pre>
     
 
         <p class="code-caption">Resume one with messages</p>
@@ -1341,7 +1370,7 @@ timePerf.stop("Last Step").resume();</code></pre>
 
     
     <pre class="prettyprint"><code>// display the duration of the second step
-timePerf.resume(2);</code></pre>
+timePerf.print(2);</code></pre>
     
 
         <p class="code-caption">Resume all steps silently</p>
@@ -1349,7 +1378,7 @@ timePerf.resume(2);</code></pre>
 
     
     <pre class="prettyprint"><code>// returns an Array of percentage without console messages
-timePerf.resume(true);</code></pre>
+timePerf.print(true);</code></pre>
     
 
         <p class="code-caption">Resume one step silently</p>
@@ -1357,9 +1386,110 @@ timePerf.resume(true);</code></pre>
 
     
     <pre class="prettyprint"><code>// returns the second step percentage without console messages
-timePerf.resume(2,true);</code></pre>
+timePerf.print(2,true);</code></pre>
     
 
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="reset">
+            
+            
+            reset<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TimePerf.html">TimePerf</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 182
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Resets the TimePerf tool (Removes all steps)
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="TimePerf.html">TimePerf</a>
+                        
+                    
+            </td>
+            <td class="description last">timePerf - The TimePerf Object</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
     
 </dd>
 
@@ -1375,20 +1505,18 @@ timePerf.resume(2,true);</code></pre>
     
         
         <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line50">line 50</a>
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 50
         </div>
         
     </div>
 
-    
-    <p class="summary"><p>Reset TimePerf &amp; mark a step in TimePerf measurements associated with a given name</p>.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Reset TimePerf &amp; mark a step in TimePerf measurements associated with a given name</p>
+        Reset TimePerf & mark a step in TimePerf measurements associated with a given name
     </div>
     
 
@@ -1435,7 +1563,7 @@ timePerf.resume(2,true);</code></pre>
             
             <td class="description last">
                 
-                <p>Name of the new TimePerf session</p></td>
+                Name of the new TimePerf session</td>
         </tr>
 	
 	
@@ -1523,22 +1651,19 @@ timePerf.resume(2,true);</code></pre>
     
         
         <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line78">line 78</a>
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 78
         </div>
         
     </div>
 
-    
-    <p class="summary"><p>Mark a step in TimePerf measurements associated with a given name
-You can also use <code>resume</code> and <code>pause</code> to after</p>.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Mark a step in TimePerf measurements associated with a given name
-You can also use <code>resume</code> and <code>pause</code> to after</p>
+        Mark a step in TimePerf measurements associated with a given name
+You can also use <code>resume</code> and <code>pause</code> to after
     </div>
     
 
@@ -1592,7 +1717,7 @@ You can also use <code>resume</code> and <code>pause</code> to after</p>
                         
                     
                 
-                <p>Name associated to the step</p></td>
+                Name associated to the step</td>
         </tr>
 	
 	
@@ -1680,22 +1805,19 @@ You can also use <code>resume</code> and <code>pause</code> to after</p>
     
         
         <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line66">line 66</a>
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 66
         </div>
         
     </div>
 
-    
-    <p class="summary"><p>Mark a step in TimePerf measurements associated with a given name and switch TimePerf to pause
-You can use <code>resume</code> just after to show a resume</p>.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Mark a step in TimePerf measurements associated with a given name and switch TimePerf to pause
-You can use <code>resume</code> just after to show a resume</p>
+        Mark a step in TimePerf measurements associated with a given name and switch TimePerf to pause
+You can use <code>resume</code> just after to show a resume
     </div>
     
 
@@ -1744,7 +1866,7 @@ You can use <code>resume</code> just after to show a resume</p>
                         
                     
                 
-                <p>Name associated to the step</p></td>
+                Name associated to the step</td>
         </tr>
 	
 	
@@ -1832,20 +1954,18 @@ You can use <code>resume</code> just after to show a resume</p>
     
         
         <div class="tag-source">
-            <a href="-_home_remy_workspace_TimePerf_time-perf.js.html">/home/remy/workspace/TimePerf/time-perf.js</a>, <a href="-_home_remy_workspace_TimePerf_time-perf.js.html#line209">line 209</a>
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 213
         </div>
         
     </div>
 
-    
-    <p class="summary"><p>Unpauses TimePerf and returns the pause duration</p>.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Unpauses TimePerf and returns the pause duration</p>
+        Unpauses TimePerf and returns the pause duration
     </div>
     
 
@@ -1952,7 +2072,7 @@ You can use <code>resume</code> just after to show a resume</p>
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Mar 10 2016 16:38:36 GMT+0100 (CET)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Jul 06 2016 15:00:06 GMT+0200 (CEST)
         </footer>
     </div>
 </div>
