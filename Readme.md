@@ -3,7 +3,7 @@
 
 TimePerf is a simple npm module to evaluate et measure a javascript application. TimePerf is a singleton it can be require in through several modules/files.
 
-### Documentation [(click here)](http://remy199210.github.io/TimePerf/TimePerf.html)
+### Documentation [(click here)](http://springeo.github.io/TimePerf/TimePerf.html)
 
 ### Installation
 ```bash
