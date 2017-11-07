@@ -38,10 +38,34 @@ function TimePerf(depth){
 	this.name = 'TimePerf session '+this.depth;
 	this.children = [];
 	this.tag = "[TimePerf] ";
+	this.instances = {};
 	return this;
 }
 
 TimePerf.prototype = {
+	/**
+	 * Remove all created instances
+	 */
+	cleanInstances: function (){
+	    this.instances = {};
+	},
+
+	/**
+	 * Create a new TimePerf instance and store it in the instance map
+	 * @param {string} name
+	 * @returns {TimePerf}
+	 */
+	newInstance: function (name){
+	    if (!this.instances[name]) {
+		    this.instances[name] = new TimePerf();
+	    }
+        return this.instances[name];
+	},
+
+	getInstance: function () {
+		return this.newInstance.apply(this,arguments)
+	},
+
 	/**
 	 * Reset TimePerf & mark a step in TimePerf measurements associated with a given name
 	 * @param {String} name - Name of the new TimePerf session
@@ -172,7 +196,7 @@ TimePerf.prototype = {
 	},
 
 	resume: function () {
-		this.print.call(this,arguments)
+		this.print.apply(this,arguments)
 	},
 
 	/**
