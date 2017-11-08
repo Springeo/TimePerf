@@ -56,11 +56,15 @@
             
                 <li data-name="TimePerf#childStop"><a href="TimePerf.html#childStop">childStop</a></li>
             
+                <li data-name="TimePerf#cleanInstances"><a href="TimePerf.html#cleanInstances">cleanInstances</a></li>
+            
                 <li data-name="TimePerf#getTime"><a href="TimePerf.html#getTime">getTime</a></li>
             
                 <li data-name="TimePerf#lastChild"><a href="TimePerf.html#lastChild">lastChild</a></li>
             
                 <li data-name="TimePerf#log"><a href="TimePerf.html#log">log</a></li>
+            
+                <li data-name="TimePerf#newInstance"><a href="TimePerf.html#newInstance">newInstance</a></li>
             
                 <li data-name="TimePerf#pause"><a href="TimePerf.html#pause">pause</a></li>
             
@@ -70,9 +74,13 @@
             
                 <li data-name="TimePerf#start"><a href="TimePerf.html#start">start</a></li>
             
+                <li data-name="TimePerf#startInstance"><a href="TimePerf.html#startInstance">startInstance</a></li>
+            
                 <li data-name="TimePerf#step"><a href="TimePerf.html#step">step</a></li>
             
                 <li data-name="TimePerf#stop"><a href="TimePerf.html#stop">stop</a></li>
+            
+                <li data-name="TimePerf#stopInstance"><a href="TimePerf.html#stopInstance">stopInstance</a></li>
             
                 <li data-name="TimePerf#unpause"><a href="TimePerf.html#unpause">unpause</a></li>
             
@@ -306,7 +314,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 241
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 319
         </div>
         
     </div>
@@ -407,7 +415,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 256
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 334
         </div>
         
     </div>
@@ -553,7 +561,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 265
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 343
         </div>
         
     </div>
@@ -698,6 +706,78 @@ timePerf.print();
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="cleanInstances">
+            
+            
+            cleanInstances<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 49
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Remove all created instances
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="getTime">
             
             
@@ -706,7 +786,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 292
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 370
         </div>
         
     </div>
@@ -852,7 +932,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 279
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 357
         </div>
         
     </div>
@@ -953,7 +1033,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 231
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 309
         </div>
         
     </div>
@@ -1046,6 +1126,172 @@ timePerf.print();
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="newInstance">
+            
+            
+            newInstance<span class="signature">(name)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TimePerf.html">TimePerf</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 70
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Create a new TimePerf instance and store it in the instance map
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="TimePerf.html">TimePerf</a>
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">Create a new TimePerf instance</p>
+    
+
+    
+    <pre class="prettyprint"><code>// Better use startInstance and stopInstance for simple usages
+// alias getInstance both will return the instance if it exists or create it if not
+const instance = timePerf.newInstance("instance1");
+if (instance.pauseStep)
+ instance.unpause()
+else
+ instance.start()
+// step
+instance.pause()
+// end
+instance.stop().print()</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="pause">
             
             
@@ -1054,7 +1300,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 200
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 278
         </div>
         
     </div>
@@ -1166,7 +1412,7 @@ pause doesn't modify the previous action result and strResult
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 115
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 193
         </div>
         
     </div>
@@ -1404,7 +1650,7 @@ timePerf.print(2,true);</code></pre>
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 182
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 260
         </div>
         
     </div>
@@ -1505,7 +1751,7 @@ timePerf.print(2,true);</code></pre>
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 50
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 128
         </div>
         
     </div>
@@ -1643,6 +1889,167 @@ timePerf.print(2,true);</code></pre>
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="startInstance">
+            
+            
+            startInstance<span class="signature">(name)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TimePerf.html">TimePerf</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 93
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Create a new instance or get it if it exists and start/unpause it.
+It is recommended to use startInstance with stopInstance only
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="TimePerf.html">TimePerf</a>
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">Instance simple usage</p>
+    
+
+    
+    <pre class="prettyprint"><code>// At the begining of the function to measure
+timePerf.startInstance("Function duration");
+// At the end of it
+const endCondition = index === lastIndex;
+timePerf.stopInstance("Function duration", endCondition);</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="step">
             
             
@@ -1651,7 +2058,7 @@ timePerf.print(2,true);</code></pre>
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 78
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 156
         </div>
         
     </div>
@@ -1805,7 +2212,7 @@ You can also use <code>resume</code> and <code>pause</code> to after
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 66
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 144
         </div>
         
     </div>
@@ -1946,6 +2353,176 @@ You can use <code>resume</code> just after to show a resume
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="stopInstance">
+            
+            
+            stopInstance<span class="signature">(name, endCondition)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TimePerf.html">TimePerf</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 112
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Switch to pause the instance or stop, print and clean it when the endCondition is true.
+It is recommended to use stopInstance with startInstance only
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The id of the instance</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>endCondition</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                When the instance is stopped</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="TimePerf.html">TimePerf</a>
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="unpause">
             
             
@@ -1954,7 +2531,7 @@ You can use <code>resume</code> just after to show a resume
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 213
+            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 291
         </div>
         
     </div>
@@ -2072,7 +2649,7 @@ You can use <code>resume</code> just after to show a resume
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Jul 06 2016 15:00:06 GMT+0200 (CEST)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Nov 08 2017 11:00:17 GMT+0100 (CET)
         </footer>
     </div>
 </div>
