@@ -35,6 +35,10 @@ timePerf.print();
  > 2. Function    : 36.5 % (73 ms)
 ```
 ### Latest features :
+> We know you wanted to do this, at least we wanted to: get/create identified TimePerf instance
++ You can now create new TimePerf instance and access it through the TimePerf singleton with the newInstance/getInstance function
+
+> Rename for better readibility
 + Better use ```print``` to print measure durations (```resume``` still an alias)
 + For permanent duration measure and easiest duration analysis use ```getTime(index)```
 
@@ -99,3 +103,7 @@ timePerf.unpause()
 ```
 
 + ```start``` will ```reset``` and ```step``` TimePerf. You can call it at any time to restart TimePerf
+
+## Dev
+To regenerate documentation
+```jsdoc --configure documentation/jsdoc.json```

@@ -54,6 +54,18 @@ TimePerf.prototype = {
 	 * Create a new TimePerf instance and store it in the instance map
 	 * @param {string} name
 	 * @returns {TimePerf}
+	 * @example <caption>Create a new TimePerf instance</caption>
+	 * // Better use startInstance and stopInstance for simple usages
+	 * // alias getInstance both will return the instance if it exists or create it if not
+	 * const instance = timePerf.newInstance("instance1");
+	 * if (instance.pauseStep)
+	 *  instance.unpause()
+	 * else
+	 *  instance.start()
+	 * // step
+	 * instance.pause()
+	 * // end
+	 * instance.stop().print()
 	 */
 	newInstance: function (name){
 	    if (!this.instances[name]) {
@@ -64,6 +76,48 @@ TimePerf.prototype = {
 
 	getInstance: function () {
 		return this.newInstance.apply(this,arguments)
+	},
+
+	/**
+	 * Create a new instance or get it if it exists and start/unpause it.
+	 * It is recommended to use startInstance with stopInstance only
+	 * @param {string} name
+	 * @returns {TimePerf}
+	 * @example <caption>Instance simple usage</caption>
+	 * // At the begining of the function to measure
+	 * timePerf.startInstance("Function duration");
+	 * // At the end of it
+	 * const endCondition = index === lastIndex;
+	 * timePerf.stopInstance("Function duration", endCondition);
+	 */
+	startInstance: function (name){
+		const tpInst = this.getInstance(name);
+
+		if (tpInst.pauseStep) {
+			tpInst.unpause();
+		} else {
+			tpInst.start(name);
+		}
+
+		return tpInst;
+	},
+
+	/**
+	 * Switch to pause the instance or stop, print and clean it when the endCondition is true.
+	 * It is recommended to use stopInstance with startInstance only
+	 * @param {string}  name         - The id of the instance
+	 * @param {boolean} endCondition - When the instance is stopped
+	 * @returns {TimePerf}
+	 */
+	stopInstance: function (name, endCondition){
+		const tpInst = this.getInstance(name);
+		if (endCondition) {
+			tpInst.stop().print();
+			delete this.instances[name];
+		} else {
+			tpInst.pause();
+		}
+		return tpInst;
 	},
 
 	/**
