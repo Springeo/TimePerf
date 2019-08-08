@@ -2,11 +2,15 @@
   "author": "Rémy Drouet",
   "name": "time-perf",
   "description": "A simple object to evaluate the performance of a function|application|algorithm",
-  "version": "1.4.1",
+  "version": "2.0.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/Springeo/TimePerf.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "type": "module",
   "main": "time-perf.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,6 +31,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Springeo/TimePerf/issues"
+  },
+  "engines": {
+    "node": "^12.0.0"
   },
   "homepage": "http://springeo.github.io/TimePerf/TimePerf.html"
 }
