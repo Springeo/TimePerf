@@ -130,6 +130,8 @@
     TimePerf
     </h2>
     
+        <div class="class-description">TimePerf is a simple node module to evaluate the performance of a function|application|algorithm</div>
+    
 </header>  
 
 <article>
@@ -148,7 +150,7 @@
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 25
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 48
         </div>
         
     </div>
@@ -157,10 +159,6 @@
 </dt>
 <dd>
     
-    
-    <div class="description">
-        TimePerf is a simple node module to evaluate the performance of a function|application|algorithm
-    </div>
     
 
     
@@ -219,6 +217,29 @@
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>instances</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">object.&lt;*, <a href="TimePerf.html">TimePerf</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
 	</tbody>
 </table></dl>
         
@@ -261,15 +282,15 @@
         
 
     
-    <pre class="prettyprint"><code>var timePerf = require('time-perf');
+    <pre class="prettyprint"><code>import timePerf from "time-perf"
 
-timePerf.start();
+timePerf.start()
 // ..execute algorithm to evaluate
-timePerf.step('Algorithm');
+timePerf.step("Algorithm")
 // ..execute a function to evaluate
-timePerf.stop('Function');
+timePerf.stop("Function")
 
-timePerf.print();
+timePerf.print()
 // Will display :
 --------------------------------
 -          TimePerf result         -
@@ -314,7 +335,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 319
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 331
         </div>
         
     </div>
@@ -415,7 +436,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 334
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 346
         </div>
         
     </div>
@@ -561,7 +582,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 343
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 355
         </div>
         
     </div>
@@ -714,7 +735,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 49
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 57
         </div>
         
     </div>
@@ -786,7 +807,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 370
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 382
         </div>
         
     </div>
@@ -932,7 +953,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 357
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 369
         </div>
         
     </div>
@@ -1033,7 +1054,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 309
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 321
         </div>
         
     </div>
@@ -1134,7 +1155,7 @@ timePerf.print();
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 70
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 78
         </div>
         
     </div>
@@ -1274,7 +1295,7 @@ timePerf.print();
     
     <pre class="prettyprint"><code>// Better use startInstance and stopInstance for simple usages
 // alias getInstance both will return the instance if it exists or create it if not
-const instance = timePerf.newInstance("instance1");
+const instance = timePerf.newInstance("instance1")
 if (instance.pauseStep)
  instance.unpause()
 else
@@ -1300,7 +1321,7 @@ instance.stop().print()</code></pre>
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 278
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 290
         </div>
         
     </div>
@@ -1392,8 +1413,8 @@ pause doesn't modify the previous action result and strResult
         
 
     
-    <pre class="prettyprint"><code>timePerf.step("Step name").pause().print();
-//Will display
+    <pre class="prettyprint"><code>timePerf.step("Step name").pause().print()
+// Will display
 "[TimePerf] > 1. Step name : 127 ms"</code></pre>
     
 
@@ -1412,7 +1433,7 @@ pause doesn't modify the previous action result and strResult
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 193
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 204
         </div>
         
     </div>
@@ -1584,7 +1605,8 @@ pause doesn't modify the previous action result and strResult
                         
                     
             </td>
-            <td class="description last">timePerf - The TimePerf Object plus a percentage or an array of percentage (timePerf.result == 0 for error)</td>
+            <td class="description last">timePerf - The TimePerf Object plus a percentage or an array of percentage (timePerf.result
+    == 0 for error)</td>
         </tr>
     
     </tbody>
@@ -1650,7 +1672,7 @@ timePerf.print(2,true);</code></pre>
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 260
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 272
         </div>
         
     </div>
@@ -1751,7 +1773,7 @@ timePerf.print(2,true);</code></pre>
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 128
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 136
         </div>
         
     </div>
@@ -1897,7 +1919,7 @@ timePerf.print(2,true);</code></pre>
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 93
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 101
         </div>
         
     </div>
@@ -2037,10 +2059,10 @@ It is recommended to use startInstance with stopInstance only
 
     
     <pre class="prettyprint"><code>// At the begining of the function to measure
-timePerf.startInstance("Function duration");
+timePerf.startInstance("Function duration")
 // At the end of it
-const endCondition = index === lastIndex;
-timePerf.stopInstance("Function duration", endCondition);</code></pre>
+const endCondition = index === lastIndex
+timePerf.stopInstance("Function duration", endCondition)</code></pre>
     
 
     
@@ -2058,7 +2080,7 @@ timePerf.stopInstance("Function duration", endCondition);</code></pre>
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 156
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 166
         </div>
         
     </div>
@@ -2212,7 +2234,7 @@ You can also use <code>resume</code> and <code>pause</code> to after
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 144
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 153
         </div>
         
     </div>
@@ -2356,12 +2378,12 @@ You can use <code>resume</code> just after to show a resume
         <h4 class="name" id="stopInstance">
             
             
-            stopInstance<span class="signature">(name, endCondition)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TimePerf.html">TimePerf</a>}</span>
+            stopInstance<span class="signature">(name, <span class="optional">endCondition</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TimePerf.html">TimePerf</a>}</span>
         </h4>
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 112
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 120
         </div>
         
     </div>
@@ -2394,6 +2416,8 @@ It is recommended to use stopInstance with startInstance only
 		<th>Type</th>
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -2417,8 +2441,17 @@ It is recommended to use stopInstance with startInstance only
             </td>
             
             
+                <td class="default">
+                
+                </td>
+            
             
             <td class="description last">
+                
+                    
+                    
+                        
+                    
                 
                 The id of the instance</td>
         </tr>
@@ -2440,8 +2473,21 @@ It is recommended to use stopInstance with startInstance only
             </td>
             
             
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
             
             <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
                 
                 When the instance is stopped</td>
         </tr>
@@ -2531,7 +2577,7 @@ It is recommended to use stopInstance with startInstance only
     
         
         <div class="tag-source">
-            /home/remy/workspace/Lab/TimePerf/time-perf.js, line 291
+            /home/remy.drouet@sglk.local/workspace/TimePerf/time-perf.js, line 303
         </div>
         
     </div>
@@ -2624,7 +2670,7 @@ It is recommended to use stopInstance with startInstance only
     
 
     
-    <pre class="prettyprint"><code>timePerf.unpause().log();
+    <pre class="prettyprint"><code>timePerf.unpause().log()
 // will display
 "TimePerf has marked a 20 ms pause"</code></pre>
     
@@ -2649,7 +2695,7 @@ It is recommended to use stopInstance with startInstance only
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Nov 08 2017 11:00:17 GMT+0100 (CET)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Aug 08 2019 10:27:02 GMT+0200 (GMT+02:00)
         </footer>
     </div>
 </div>
