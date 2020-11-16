@@ -2,7 +2,7 @@
   "author": "Rémy Drouet",
   "name": "time-perf",
   "description": "A simple object to evaluate the performance of a function|application|algorithm",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/Springeo/TimePerf.git"
@@ -32,7 +32,7 @@
     "url": "https://github.com/Springeo/TimePerf/issues"
   },
   "engines": {
-    "node": "^12.0.0"
+    "node": ">=12.0.0"
   },
   "homepage": "http://springeo.github.io/TimePerf/TimePerf.html"
 }
